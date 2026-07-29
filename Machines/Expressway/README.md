@@ -15,14 +15,14 @@ La porta **UDP 500**  la porta standard utilizzata dal protocollo ike (internet 
 ```
 sudo ike-scan -M -A 10.10.11.87
 ```
-- M: Formatta l'output su piÃ¹ righe , rendendolo piÃ¹ leggibile.
+- M: Formatta l'output su più righe , rendendolo più leggibile.
 
-- A: Tenta la "ModalitÃ  Aggressiva" .
+- A: Tenta la "Modalità Aggressiva" .
 ## 3.Â  `ike-scan --pskcrack`
 
 ## 1. Scopo del Comando
 
-Il comando `ike-scan --pskcrack [IP]` Ã¨ usato per **estrarre l'hash della Pre-Shared Key (PSK)** da un server VPN (porta UDP 500) che Ã¨ configurato in modo vulnerabile.
+Il comando `ike-scan --pskcrack [IP]` usato per **estrarre l'hash della Pre-Shared Key (PSK)** da un server VPN (porta UDP 500) che Ã¨ configurato in modo vulnerabile.
 
 Non cracca la password, ma **recupera l'hash** necessario per craccarla offline.
 
@@ -31,13 +31,13 @@ Non cracca la password, ma **recupera l'hash** necessario per craccarla offline.
 | Parte | Significato | Funzione |
 | :--- | :--- | :--- |
 | **`ike-scan`** | Lo strumento | Il tool specializzato per interrogare la porta UDP 500 (IKE). |
-| **`--pskcrack`** | L'Opzione (Flag) | Dice a `ike-scan` di tentare una connessione in **"Aggressive Mode"** (ModalitÃ  Aggressiva). |
+| **`--pskcrack`** | L'Opzione (Flag) | Dice a `ike-scan` di tentare una connessione in **"Aggressive Mode"** (Modalità Aggressiva). |
 
 ### 3. Come Funziona l'Attacco
 
 1.Â  Il comando invia una richiesta in "Aggressive Mode" al server VPN.
-2.Â  Un server configurato in modo insicuroÂ  risponde inviando dati di autenticazione, inclusa una stringa che Ã¨ l'**hash della password (PSK)**.
-3.Â  L'output del comando mostrerÃ  questo hash.
+2.Â  Un server configurato in modo insicuro risponde inviando dati di autenticazione, inclusa una stringa che è l'**hash della password (PSK)**.
+3.Â  L'output del comando mostrerà  questo hash.
 
 ### 4. Crack dell'Hash
 
@@ -46,7 +46,7 @@ Non cracca la password, ma **recupera l'hash** necessario per craccarla offline.
 
 ```shell
 # 1. Ottenere l'hash (l'output va salvato in un file)
-ike-scan -M -AÂ  --pskcrack [IP]
+ike-scan -M -A  --pskcrack [IP]
 
 # 2. Craccare l'hash (esempio)
 psk-crack -d /usr/share/wordlists/rockyou.txt hash.txt
@@ -79,9 +79,9 @@ cat user.txt
 
 ## 5. Privilage Excalation
 
-Dopo aver ottenuto l'accesso come utente `ike` tramite SSH, l'obiettivo Ã¨ diventare `root`.
+Dopo aver ottenuto l'accesso come utente `ike` tramite SSH, l'obiettivo è diventare `root`.
 
-### 1. Enumerazione InizialeÂ 
+### 1. Enumerazione Iniziale
 
 Il primo comando da lanciare Ã¨ sempre `sudo -l` per vedere quali comandi possiamo eseguire come root.
 
@@ -94,7 +94,7 @@ ike@expressway:~$ sudo -l
 ike@expressway:~$ which sudo
 /usr/local/bin/sudo
 ```
-Questo conferma che stiamo usando un file sudo non standard (quello normale Ã¨ in /usr/bin/sudo). Questo sudo personalizzato Ã¨ il nostro percorso di attacco
+Questo conferma che stiamo usando un file sudo non standard (quello normale è in /usr/bin/sudo). Questo sudo personalizzato è il nostro percorso di attacco
 
 ### 2. Enumerazine dei gruppi e log
 
