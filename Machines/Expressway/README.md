@@ -10,7 +10,7 @@ sudo nmap -sV -sC 10.10.11.87
 Lo scan ha rivelato solo la porta 22 (SSH) aperta. Troppo poco per iniziare.
 ## 2. Scan porta 500 (IKE/ VPN)
 
-La porta **UDP 500** Ã¨ la porta standard utilizzata dal protocollo ike (internet key exchange ) per stabilire le connessioni VPN
+La porta **UDP 500**  la porta standard utilizzata dal protocollo ike (internet key exchange ) per stabilire le connessioni VPN
 
 ```
 sudo ike-scan -M -A 10.10.11.87
