@@ -18,7 +18,7 @@ sudo ike-scan -M -A 10.10.11.87
 - M: Formatta l'output su più righe , rendendolo più leggibile.
 
 - A: Tenta la "Modalità Aggressiva" .
-## 3.Â  `ike-scan --pskcrack`
+## 3.  `ike-scan --pskcrack`
 
 ## 1. Scopo del Comando
 
